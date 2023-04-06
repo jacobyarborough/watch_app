@@ -1,4 +1,10 @@
 <%= form_with model: @user, url: registrations_path, method: :post do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <h2><%= message %><h2>
+    <% end %>
+  <% end %>
+
   <%= f.label :email %>
   <%= f.text_field :email, placeholder: "name@mail.com" %>
   <%= f.label :password %>
