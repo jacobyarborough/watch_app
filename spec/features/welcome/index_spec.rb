@@ -6,4 +6,11 @@ RSpec.describe "Welcome Page", type: :feature do
 
     expect(page).to have_content("Welcome to the Watch App")
   end 
+
+  it "has a link to sign-up/register" do 
+    visit root_path 
+
+    click_on "Register" 
+    expect(page).to have_current_path(new_registration_path)
+  end 
 end 
