@@ -1,7 +1,11 @@
+<% if flash[:notice] %>
+  <h1><%= flash[:notice] %></h1>
+<% end %>
+
 <h1>Welcome to the Watch App</h1>
 <% if Current.user %>
   <h2><%= Current.user.email %></h2>
-  <%= button_to "Sign Out", url: session_path(Current.user), method: :post %>
+  <%= button_to "Sign Out", session_path(Current.user), method: :delete %>
 <% else %>
   <h2><%= link_to "Register", new_registration_path %></h2>
 <% end %>
