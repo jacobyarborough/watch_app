@@ -38,7 +38,7 @@ RSpec.describe "Welcome Page", type: :feature do
     click_on "Sign Out"
 
     expect(page).to have_current_path(root_path)
-    expect(page).to have_content("Successfull signed out")
+    expect(page).to have_content("Successfully signed out")
     expect(page).not_to have_content("example@gmail.com")
   end 
 end 
