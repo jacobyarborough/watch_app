@@ -12,16 +12,33 @@ RSpec.describe "Welcome Page", type: :feature do
 
     click_on "Register" 
     expect(page).to have_current_path(new_registration_path)
+
+    fill_in "Email", with: "example@mail.com"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    click_on "Create Account"
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("example@mail.com")
   end 
 
   it "allows you to sign out if signed in" do 
-    user = User.create!(email: "example@gmail.com", password: "password", password_confirmation: "password")
-    session[:user_id] = user.id
     visit root_path 
 
-    click_on "Sign Out" 
-    
-    expect(page).not_to have_content("Sign Out")
+    click_on "Register" 
+    expect(page).to have_current_path(new_registration_path)
+
+    fill_in "Email", with: "example@mail.com"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    click_on "Create Account"
+
+    expect(page).not_to have_content("Register")
+
+    click_on "Sign Out"
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("Successfull signed out")
     expect(page).not_to have_content("example@gmail.com")
   end 
 end 
