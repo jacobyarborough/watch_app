@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :passwords, only: [:edit, :update]
+  resources :password_resets, except: [:destroy]
 end
