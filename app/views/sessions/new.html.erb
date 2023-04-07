@@ -1,0 +1,7 @@
+<%= form_with url: sessions_path, method: :post do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, placeholder: "example@mail.com" %>
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "password" %>
+  <%= f.submit "Sign In" %>
+<% end %>
