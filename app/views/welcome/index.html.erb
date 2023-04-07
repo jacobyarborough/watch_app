@@ -8,4 +8,5 @@
   <%= button_to "Sign Out", session_path(Current.user), method: :delete %>
 <% else %>
   <h2><%= link_to "Register", new_registration_path %></h2>
+  <h2><%= link_to "Sign In", new_session_path %></h2>
 <% end %>

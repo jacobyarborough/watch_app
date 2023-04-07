@@ -41,4 +41,21 @@ RSpec.describe "Welcome Page", type: :feature do
     expect(page).to have_content("Successfully signed out")
     expect(page).not_to have_content("example@gmail.com")
   end 
+
+  it "has a link to sign in" do 
+    user = User.create(email: "hello@mail.com", password: "password", password_confirmation: "password")
+
+    visit root_path 
+
+    click_on "Sign In"
+    fill_in "Email", with: "hello@mail.com"
+    fill_in "Password", with: "password"
+    click_on "Sign In"
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("hello@mail.com")
+    expect(page).to have_content("Sign Out")
+    expect(page).not_to have_content("Sign In")
+    expect(page).not_to have_content("Register")
+  end 
 end 
