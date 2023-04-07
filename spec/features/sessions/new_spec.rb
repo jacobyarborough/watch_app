@@ -15,6 +15,14 @@ RSpec.describe "Login page", type: :feature do
       expect(page).to have_current_path(root_path)
       expect(page).to have_content("hello@mail.com")
     end 
+
+    it "has a link for forgot password" do 
+      visit new_session_path 
+
+      click_on "Forgot Password?"
+
+      expect(page).to have_current_path(new_password_reset_path)
+    end 
   end 
 
   context "the incorrect credentials are entered" do 
