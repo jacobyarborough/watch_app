@@ -58,4 +58,18 @@ RSpec.describe "Welcome Page", type: :feature do
     expect(page).not_to have_content("Sign In")
     expect(page).not_to have_content("Register")
   end 
+
+  it "has a link for a user to edit password" do 
+    user = User.create(email: "hello@mail.com", password: "password", password_confirmation: "password")
+
+    visit root_path 
+
+    click_on "Sign In"
+    fill_in "Email", with: "hello@mail.com"
+    fill_in "Password", with: "password"
+    click_on "Sign In"
+
+    click_on "Edit Password"
+    expect(page).to have_current_path(edit_password_path(user))
+  end 
 end 
