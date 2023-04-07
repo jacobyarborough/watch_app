@@ -24,6 +24,12 @@ RSpec.describe "Edit Password form", type: :feature do
   end 
 
   context "the user is not logged in" do 
+    it "should redirect the user to the sign in page with an error" do 
+      visit "/passwords/1/edit"
+
+      expect(page).to have_current_path(new_session_path)
+      # expect(page).to have_content("You must be signed in")
+    end 
   end 
 
   context "the user does not enter matching passwords" do 
