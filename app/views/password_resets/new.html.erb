@@ -1,0 +1,5 @@
+<%= form_with url: password_resets_path, method: :post do |f| %>
+<%= f.label :email %>
+<%= f.text_field :email, placeholder: "example@name.com" %>
+<%= f.submit "Send Forgot Email Link" %>
+<% end %>
