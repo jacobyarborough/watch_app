@@ -60,12 +60,12 @@ RSpec.describe "Welcome Page", type: :feature do
   end 
 
   it "has a link for a user to edit password" do 
-    user = User.create(email: "hello@mail.com", password: "password", password_confirmation: "password")
+    user = User.create!(email: "bye@mail.com", password: "password", password_confirmation: "password")
 
     visit root_path 
 
     click_on "Sign In"
-    fill_in "Email", with: "hello@mail.com"
+    fill_in "Email", with: "bye@mail.com"
     fill_in "Password", with: "password"
     click_on "Sign In"
 
