@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <h1><%= flash[:notice] %></h1>
+<% end %>
+
 <%= form_with url: sessions_path, method: :post do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email, placeholder: "example@mail.com" %>
