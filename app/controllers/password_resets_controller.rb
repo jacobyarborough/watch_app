@@ -14,8 +14,27 @@ class PasswordResetsController < ApplicationController
   end 
 
   def edit 
+    @user = User.find_signed(params[:token], purpose: "password_reset")
+
+    rescue ActiveSupport::MessageVerifier::InvalidSignature 
+      flash[:alert] = "The link has expired"
+      redirect_to password_resets_path
   end 
 
   def update 
+    user = User.find_signed(params[:token], purpose: "password_reset")
+    if user.update(password_params)
+      flash[:notice] = "You have successfully updated the password"
+      redirect_to new_session_path
+    else 
+      flash[:alert] = "Something went wrong. please try again"
+      redirect_to edit_password_reset_path(token: params[:token])
+    end 
+  end 
+
+  private 
+
+  def password_params 
+    params.require(:user).permit(:password, :password_confirmation)
   end 
 end 
