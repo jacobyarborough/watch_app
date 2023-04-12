@@ -1,15 +1,23 @@
 <%= form_with model: @user, url: registrations_path, method: :post do |f| %>
   <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |message| %>
-      <h2><%= message %><h2>
+      <h2><%= message %>
     <% end %>
   <% end %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email, placeholder: "name@mail.com" %>
-  <%= f.label :password %>
-  <%= f.password_field :password, placeholder: "password" %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, placeholder: "password" %>
-  <%= f.submit "Create Account" %>
+  <div class="mb-3">
+    <%= f.label :email %>
+    <%= f.text_field :email, placeholder: "name@mail.com", class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "password", class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "Create Account", class: "btn btn-primary" %>
+  </div>
 <% end %>
