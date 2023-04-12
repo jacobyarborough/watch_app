@@ -10,7 +10,7 @@ RSpec.describe "Login page", type: :feature do
       click_on "Sign In"
       fill_in "Email", with: "hello@mail.com"
       fill_in "Password", with: "password"
-      click_on "Sign In"
+      click_on "Log In"
 
       expect(page).to have_current_path(root_path)
       expect(page).to have_content("hello@mail.com")

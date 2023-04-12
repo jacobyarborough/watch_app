@@ -10,7 +10,7 @@ RSpec.describe "Edit Password form", type: :feature do
       click_on "Sign In"
       fill_in "Email", with: "lol@mail.com"
       fill_in "Password", with: "password"
-      click_on "Sign In"
+      click_on "Log In"
 
       visit edit_password_path(user.id)
 

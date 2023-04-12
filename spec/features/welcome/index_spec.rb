@@ -50,7 +50,7 @@ RSpec.describe "Welcome Page", type: :feature do
     click_on "Sign In"
     fill_in "Email", with: "hello@mail.com"
     fill_in "Password", with: "password"
-    click_on "Sign In"
+    click_on "Log In"
 
     expect(page).to have_current_path(root_path)
     expect(page).to have_content("hello@mail.com")
@@ -67,8 +67,8 @@ RSpec.describe "Welcome Page", type: :feature do
     click_on "Sign In"
     fill_in "Email", with: "bye@mail.com"
     fill_in "Password", with: "password"
-    click_on "Sign In"
-
+    click_on "Log In" 
+    click_on user.email
     click_on "Edit Password"
     expect(page).to have_current_path(edit_password_path(user))
   end 

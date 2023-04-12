@@ -6,7 +6,7 @@ RSpec.describe "New form for forgot password" do
     visit new_password_reset_path 
 
     fill_in "Email", with: "lolz@mail.com"
-    click_on "Send Forgot Email Link"
+    click_on "Send Reset Password Link"
 
     expect(page).to have_content("If the email is on file we will send a link")
     expect(page).to have_current_path(root_path)
