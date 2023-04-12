@@ -2,12 +2,6 @@
   <h1><%= flash[:notice] %></h1>
 <% end %>
 
-<h1>Welcome to the Watch App</h1>
-<% if Current.user %>
-  <h2><%= Current.user.email %></h2>
-  <%= button_to "Sign Out", session_path(Current.user), method: :delete %>
-  <%= link_to "Edit Password", edit_password_path(Current.user) %>
-<% else %>
-  <h2><%= link_to "Register", new_registration_path %></h2>
-  <h2><%= link_to "Sign In", new_session_path %></h2>
-<% end %>
+<div class="d-flex align-items-center justify-content-center">
+  <h1>Welcome to the Watch App</h1>
+</div>
